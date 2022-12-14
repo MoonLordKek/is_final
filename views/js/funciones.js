@@ -86,7 +86,50 @@ function rec_Con(){
 		}
 	});
 }
-
-function localizacion(){
 	
+function localizacion(){
+	var lat;
+	var longi;
+	$(document).ready(function(){
+		$("#pedirvan").click(function(){
+			if(!!navigator.geolocation){
+				navigator.geolocation.getCurrentPosition(
+					function(position){
+						window.alert("nav permitido");
+						lat = position.coords.latitude;
+						longi = position.coords.longitude;
+						console.log(position.coords.latitude);
+						console.log(position.coords.longitude);
+						getdist(lat,longi)
+					},
+					function(){
+						window.alert("No permitir la localización no mostrará las instituciones de acuerdo a tu localización");
+					}
+				)
+			}
+		});
+	});
+}
+function getdist(lat,long){
+	apdata = {lat : lat, long: long}
+	$.ajax({
+		url: "/is/pruebas.php",
+		method:'POST',
+		data: apdata,
+		success: function(data) {
+//			var result = data;
+			console.log(data);
+			var result = JSON.parse(data);
+			console.log(data);
+			if (result.resul==true) {
+				console.long("kekw");
+			}else if(result.error!=undefined){
+				for (var i = 0; i < 6; i++) {
+					if (result.error[i]!=undefined) {
+						alert(result.error[i]);
+					}
+				}
+			}
+		}
+	});
 }
