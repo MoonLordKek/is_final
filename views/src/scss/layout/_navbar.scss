@@ -1,0 +1,164 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+header
+{
+    margin-top: 0;
+    height: 6rem;
+    background-color: v.$rosa;
+    .contenedormenu
+    {
+        height: 100%;
+        display: flex;
+        justify-content: space-between;
+        .logo
+        {
+            width: 6rem;
+            height: 6rem;
+            display: flex;
+            align-items: center;
+            padding: 0.5rem;
+        }
+        .menu
+        {
+            display: flex;
+            align-items: center;
+            nav 
+            {
+                ul 
+                {
+                    .ubic
+                    {
+
+                        a
+                        {
+                            background-color: v.$coral;
+                            padding: 0.7rem;
+                            border-radius: 1rem;
+                            color: v.$blanco;
+                            transition: all 400ms;
+                            &:hover
+                            {
+                                background-color: v.$gris;
+                                color: v.$negro;
+                            }
+                        }
+                    }
+
+                    display: flex;
+                    align-items: center;
+                    li 
+                    {
+                        a 
+                        {
+                            font-size: 1.6rem;
+                            text-transform: uppercase;
+                            color: v.$negro;
+                            &:hover
+                            {
+                                color: v.$coral;
+                            }
+                        }
+                    }
+                }
+                ul li
+                {
+                    list-style: none;
+                    margin-left: 3.6rem;
+                }
+            }
+        }
+    }
+}
+
+.menu nav img
+{
+    display: none;
+}
+.menu #btn-menu
+{
+    display: none;
+}
+
+@media screen and (max-width: v.$tablet)
+{
+    header
+    {
+        background-color: v.$rosa;
+    }
+    header .contenedormenu .menu nav ul {
+        display: flex;
+        align-items: start;
+        padding: 0;
+    }
+    header .menu nav
+    {
+        position: fixed;
+        top: 0;
+        right: -25rem;
+        background: v.$gris;
+        width: 250px;
+        height: 100vh;
+        padding: 4rem;
+        z-index: 1;
+        transition: all, 300ms;
+    }
+    .menu ul
+    {
+        flex-direction: column;
+        margin-top: 4rem;
+    }
+    .menu ul li 
+    {
+         margin-top: 3rem;
+         margin-left: 0;
+    }
+    .menu nav img
+    {
+        display: block;
+        width: 6rem;
+        margin-right: 0;
+    }
+    #backmenu
+    {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(0, 0, 0, 0.5);
+        display: none;
+    }
+
+    header .contenedormenu .menu nav ul li{
+        margin-left: 0;
+    }
+    .menu #btn-menu
+    {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 5rem;
+        height: 5rem;
+        background-color: rgba(133, 133, 133, 0.242);
+        font-size: 2.4rem;
+        border-radius: 5rem;
+        cursor: pointer;
+        transition: all 300ms;
+        &:hover
+        {
+            background-color: rgba(133, 133, 133, 0.104);
+        }
+    }
+}
+
+@media screen and (max-width: v.$tablet)
+{
+    @media screen and (max-height: 336px)
+    {
+        header .menu nav
+        {
+            overflow-y: scroll;
+        }
+    }
+}

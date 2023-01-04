@@ -33,6 +33,16 @@
       <h5> Iniciar Sesión </h5>
       <input class="controls" type="text" name="Usuario" value="" placeholder="Correo Electrónico" id="email">
       <input class="controls" type="password" name="Contrasena" value="" placeholder="Contraseña" id="pass">
+      <input type="text" value=0 id="noPreguntas" hidden>
+      <select name="" id="idCuestionario">
+        <?php
+            $conexion = conexion();
+            $statement = $conexion->prepare('SELECT id_cuestionario, nombre_cuestionario FROM cuestionarios');
+            $statement ->execute();
+            while($result = $statement->fetch())
+                echo "<option value=".$result[0].">".$result[1]."</option>";
+        ?>
+      </select>
       <button onclick="pruebas()" id="pedirvan" class="boton--secundario boton--primario1">Iniciar Sesión</button>
       <p><a class="form-login__enlace" href="olvidar_c_email.php">¿Olvidaste tu Contraseña?</a></p>
     </section>
@@ -45,9 +55,23 @@
     <section id="articulo">
 
     </section>
+    
     <section id="tests">
-        <button onclick="getInfo()">kekw</button>
+        <input type="text" id="idCuestionario" value=3 hidden>
+        <?php
+            for ($i=1; $i < 8; $i++) { 
+                echo "<div>";
+                for ($j=0; $j < 5; $j++) { 
+                    echo "<input type='radio' name='question".$i."' value=".$j.">";
+                }
+                echo "</div>";
+            }
+        ?>
+        <button onclick="evaluar()">kekw</button>
     </section> 
+    <section id="mensaje">
+
+    </section>
 
 
 <style>

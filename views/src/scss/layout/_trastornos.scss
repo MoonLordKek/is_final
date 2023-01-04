@@ -1,0 +1,368 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.trastornos {
+    margin-top: 5rem;
+
+    .opciones {
+        display: flex;
+        gap: 2rem;
+        justify-content: end;
+        align-items: center;
+        font-family: v.$fuente_principal;
+        font-size: 1.6rem;
+
+        select {
+            padding: 0.6rem;
+            background-color: #303179;
+            border: none;
+            border-radius: 0.5rem;
+            color: v.$blanco;
+            transition: all 500ms;
+
+            &:hover {
+                cursor: pointer;
+                scale: 1.05;
+            }
+        }
+
+        button {
+            padding: 0.6rem;
+            background-color: #ed7966;
+            border: none;
+            border-radius: 0.7rem;
+            color: v.$blanco;
+            transition: all 500ms;
+
+            &:hover {
+                cursor: pointer;
+                scale: 1.05;
+                background-color: #cf6c5d;
+            }
+        }
+    }
+
+    .trastorno {
+
+        .titulo {
+            margin-top: 5rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-evenly;
+
+            h1 {
+                font-family: v.$titulo;
+                text-align: center;
+                transition: all 50ms;
+            }
+        }
+
+        .informacion {
+            text-align: justify;
+            transition: all 50ms;
+        }
+
+        .yo-me-informo {
+            h1 {
+                font-family: v.$titulo;
+            }
+
+            p {
+                font-family: v.$fuente_principal;
+            }
+
+            button {
+                font-family: Roboto, sans-serif;
+                font-weight: 0;
+                font-size: 14px;
+                color: #fff;
+                background-color: #ed7966;
+                padding: 10px 30px;
+                border: solid #ed7966 2px;
+                box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+                border-radius: 50px;
+                transition: 1000ms;
+                transform: translateY(0);
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                cursor: pointer;
+
+                &:hover {
+                    transition: 1000ms;
+                    padding: 10px 50px;
+                    transform: translateY(-0px);
+                    background-color: #fff;
+                    color: #0066cc;
+                    border: solid 2px #ed7966;
+                }
+
+                a {
+                    text-decoration: none;
+                    color: v.$blanco;
+
+                    &:hover {
+                        color: #ed7966;
+                    }
+                }
+            }
+
+            .infografia {
+                margin-top: 5rem;
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+                align-items: center;
+                justify-content: center;
+            }
+
+            .video {
+                margin-top: 5rem;
+                display: flex;
+                flex-direction: column;
+                gap: 2rem;
+                align-items: center;
+                justify-content: center;
+
+                video {
+                    width: 80rem;
+                }
+            }
+
+            .articulos {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2rem;
+
+                a {
+                    font-family: v.$fuente_principal;
+                    font-weight: bold;
+                    font-size: 2rem;
+                }
+            }
+        }
+
+    }
+}
+
+
+.yo-me-informo 
+{
+    margin-top: 5rem;
+    h1,h3 {
+        font-family: v.$titulo;
+    }
+
+    p {
+        font-family: v.$fuente_principal;
+    }
+
+    button {
+        font-family: Roboto, sans-serif;
+        font-weight: 0;
+        font-size: 14px;
+        color: #fff;
+        background-color: #ed7966;
+        padding: 10px 30px;
+        border: solid #ed7966 2px;
+        box-shadow: rgb(0, 0, 0) 0px 0px 0px 0px;
+        border-radius: 50px;
+        transition: 1000ms;
+        transform: translateY(0);
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        cursor: pointer;
+
+        &:hover {
+            transition: 1000ms;
+            padding: 10px 50px;
+            transform: translateY(-0px);
+            background-color: #fff;
+            color: #0066cc;
+            border: solid 2px #ed7966;
+        }
+
+        a {
+            text-decoration: none;
+            color: v.$blanco;
+
+            &:hover {
+                color: #ed7966;
+            }
+        }
+    }
+
+    .infografia {
+        margin-top: 5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .video {
+        margin-top: 5rem;
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        align-items: center;
+        justify-content: center;
+
+        video {
+            width: 80rem;
+        }
+    }
+
+    .articulos {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+
+        a {
+            font-family: v.$fuente_principal;
+            font-weight: bold;
+            font-size: 2rem;
+        }
+    }
+}
+
+
+
+.trastornos {
+    .trastorno-ansiedad {
+        display: none;
+    }
+
+    .trastorno-depresion {
+        display: none;
+    }
+
+    .trastorno-autoestima {
+        display: none;
+    }
+}
+
+@media screen and (max-width: v.$telefono) {
+    .trastornos {
+        .opciones {
+            display: flex;
+            flex-direction: column;
+            gap: 4rem;
+            justify-content: end;
+            align-items: center;
+            font-family: v.$fuente_principal;
+            font-size: 1.6rem;
+
+            label {
+                font-family: v.$titulo;
+                font-size: 2.5rem;
+            }
+
+            select {
+                padding: 0.6rem;
+                background-color: #303179;
+                border: none;
+                border-radius: 0.5rem;
+                color: v.$blanco;
+                transition: all 500ms;
+
+                &:hover {
+                    cursor: pointer;
+                    scale: 1.05;
+                }
+            }
+        }
+
+        .trastorno {
+
+            .titulo {
+                margin-top: 5rem;
+                display: flex;
+                flex-direction: column-reverse;
+                align-items: center;
+                justify-content: space-evenly;
+
+                h1 {
+                    font-family: v.$titulo;
+                    text-align: center;
+                }
+            }
+
+            .informacion {
+                text-align: justify;
+            }
+
+            .yo-me-informo {
+                .video {
+                    video {
+                        width: 35rem;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@media screen and (max-width: v.$tablet) {
+    .trastornos {
+
+        .opciones {
+            display: flex;
+            gap: 1rem;
+            justify-content: end;
+            align-items: center;
+            font-family: v.$fuente_principal;
+            font-size: 1.6rem;
+
+            select {
+                padding: 0.6rem;
+                background-color: #303179;
+                border: none;
+                border-radius: 0.5rem;
+                color: v.$blanco;
+                transition: all 500ms;
+
+                &:hover {
+                    cursor: pointer;
+                    scale: 1.05;
+                }
+            }
+        }
+
+        .trastorno {
+
+            .titulo {
+                margin-top: 5rem;
+                display: flex;
+                flex-direction: column-reverse;
+                align-items: center;
+                justify-content: space-evenly;
+
+                h1 {
+                    font-family: v.$titulo;
+                    text-align: center;
+                }
+            }
+
+            .informacion {
+                text-align: justify;
+            }
+
+            transition: all 50ms;
+
+            .yo-me-informo {
+                .video {
+                    video {
+                        width: 35rem;
+                    }
+                }
+            }
+        }
+    }
+}
