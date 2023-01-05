@@ -1,3 +1,3 @@
 <?php session_start();
-	require('views/bienvenida.view.php');
+	require('views/index.view.php');
 ?>

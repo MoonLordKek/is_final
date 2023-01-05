@@ -1,0 +1,9 @@
+@use 'base/mixins' as m;
+@use 'base/variables' as v;
+
+.body-yomecuido
+{
+    background: rgb(255,255,255);
+    background: linear-gradient(0deg, rgba(255,255,255,1) 0%, rgba(250,229,223,1) 100%); 
+    background-repeat: no-repeat;
+}
