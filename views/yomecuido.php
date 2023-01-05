@@ -34,8 +34,12 @@
                         <li><a href="./instituciones.php">Instituciones</a></li>
                         <li class="ubic"><a href="./yomecuido.php">Tecnicas</a></li>
                         <li><a href="./evaluacion.php">Evaluación</a></li>
-                        <li><a href="#">Log in</a></li>
-                        <li><a href="#">Sign up</a></li>
+                        <?php
+                        if(!isset($_SESSION['usuario']))                
+                            echo '<li><a href="./iniciar_sesion.php">Log in</a></li><li><a href="./registro.php">Sign up</a></li>';
+                        else    
+                            echo '<li><a href="./CS.php">Cerrar sesión</a></li>'; 
+                        ?>
                     </ul>
                 </nav>
             </div>

@@ -3,20 +3,21 @@ function iniciar_Ses(){
 	var pass = document.getElementById("pass").value;
 	apdata = {email : email, pass: pass}
 	$.ajax({
-		url: "/IS/IS.php",
+		url: "/is/iniciar_sesion.php",
 		method:'POST',
 		data: apdata,
 		success: function(data) {
+			console.log(data);
 			var result = JSON.parse(data);
 			//var result = data;;
-			console.log(data);
-			if (result.resul==true) {
-				//alert("Sesión iniciada con éxito.");
-				window.location.href = "cuenta_user.php";
-			}else if(result.errores!=undefined){
+			console.log(result);
+			if (result.result==true) {
+				alert("Sesión iniciada con éxito.");
+				window.location.href = "index.php";
+			}else if(result.error!=undefined){
 				for (var i = 0; i < 6; i++) {
-					if (result.errores[i]!=undefined) {
-						alert(result.errores[i]);
+					if (result.error[i]!=undefined) {
+						alert(result.error[i]);
 					}
 				}
 			}else{
@@ -87,30 +88,8 @@ function rec_Con(){
 	});
 }
 	
-function localizacion(){
-	var lat;
-	var longi;
-	$(document).ready(function(){
-		$("#pedirvan").click(function(){
-			if(!!navigator.geolocation){
-				navigator.geolocation.getCurrentPosition(
-					function(position){
-						window.alert("nav permitido");
-						lat = position.coords.latitude;
-						longi = position.coords.longitude;
-						console.log(position.coords.latitude);
-						console.log(position.coords.longitude);
-						getdist(lat,longi)
-					},
-					function(){
-						window.alert("No permitir la localización no mostrará las instituciones de acuerdo a tu localización");
-					}
-				)
-			}
-		});
-	});
-}
-function pruebas(){
+
+function rec_con(){
 	var info = ["ac","bc","cc"];
 	$.ajax({
 		url: "/is/pruebas.php",
@@ -136,46 +115,6 @@ function pruebas(){
 		}
 	});
 }
-function getdist(lat,long){
-	apdata = {lat : lat, long: long}
-	$.ajax({
-		url: "/is/instituciones.php",
-		method:'POST',
-		data: apdata,
-		success: function(data) {
-//			var result = data;
-			console.log(data);
-			var result = JSON.parse(data);
-			var i=1;
-			var distancias=[];
-			while(result[i]!=undefined){
-				distancias.push(result[i].rows[0].elements[0].distance.value);
-				console.log(result[i++]);
-			}
-			console.log(distancias);
-			distancias.sort();
-			console.log(distancias);
-			var html="",distancia1;
-			for(var j =0; j<3;j++){
-				console.log("while grande\n");
-				i = 1;
-				while(i<=3){
-					distancia1=result[i].rows[0].elements[0].distance.value;
-					if(distancias[j]==distancia1){
-						//datos html será la estructura html para mostrar las instituciones, deberá cambiar dinámicamente
-						html += "datos html "+distancia1+"\n";
-						i=4;
-					}else{
-						i++;
-					}
-				}
-			}
-			console.log(html);
-			//console.log(result["1"].rows[0].elements[0].distance.text);
-		}
-	});
-}
-
 
 function pruebas(){
 	var id = document.getElementById("idCuestionario").value;
@@ -351,6 +290,36 @@ function getTecnica(){
 }
 
 function evaluar(){
+	var noElementos = document.getElementById('noPreguntas').value;
+	var total = 0;
+	console.log("noEl: "+document.getElementById('idCuestionario').value);
+	for (let i = 1; i <= noElementos; i++) {
+		if(document.querySelector('input[name="question'+i+'"]:checked')==null){
+			alert("Por favor conteste todas las preguntas");
+			break;
+		}else{	
+			console.log(document.querySelector('input[name="question'+i+'"]:checked'));	
+			total += parseInt(document.querySelector('input[name="question'+i+'"]:checked').value);
+			console.log(total);
+			//adaptar forma de obtener el número de elementos
+			var apdata={id: document.getElementById('idCuestionario').value,
+						resultados: total};
+			$.ajax({
+				url: "/is/evaluacion.php",
+				method:'POST',
+				data: apdata,
+				success: function(data) {
+					console.log(data);
+					var result = JSON.parse(data);
+					if(result!=undefined)
+						document.getElementById('mensaje').innerHTML=result;
+				}
+			});
+		}
+	}
+}
+
+function evaluar2(){
 	var noElementos = document.getElementById('noPreguntas').value;
 	var total = 0;
 	console.log("noEl: "+document.getElementById('idCuestionario').value);

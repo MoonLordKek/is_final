@@ -29,12 +29,16 @@
                     <img src="./views/src/img/logot.png" alt="logo">
                     <ul>
                         <li><a href="./index.php">Inicio</a></li>
-                        <li><a href="./tests.php">Tests</a></li>
+                        <li><a href="./cuestionario.php">Tests</a></li>
                         <li class="ubic"><a href="./instituciones.php">Instituciones</a></li>
                         <li><a href="./yomecuido.php">Tecnicas</a></li>
                         <li><a href="./evaluacion.php">Evaluación</a></li>
-                        <li><a href="#">Log in</a></li>
-                        <li><a href="#">Sign up</a></li>
+                        <?php
+                        if(!isset($_SESSION['usuario']))                
+                            echo '<li><a href="./iniciar_sesion.php">Log in</a></li><li><a href="./registro.php">Sign up</a></li>';
+                        else    
+                            echo '<li><a href="./CS.php">Cerrar sesión</a></li>'; 
+                        ?>
                     </ul>
                 </nav>
             </div>
@@ -47,45 +51,36 @@
 
 
     
-    <div class="instituciones">
+    <div class="instituciones" id="instituciones">
 
         <div class="institucion contenedor">
-
             <div class="imagen">
                 <img src="./views/src/img/cemepi.png" alt="institucion" style="width: 40rem;">
             </div>
-            
             <div class="texto">
                 <h1>CEMEPI</h1>
-                <p>CEMEPI Terapias Psicológicas Sede Reforma', 'Av. Paseo de la Reforma 300, Juárez, Cuauhtémoc, 06600 Ciudad de México, CDMX', '+525529028389', '06600CDMX'</p>
+                <p>CEMEPI Terapias Psicológicas Sede Reforma', 'Av. Paseo de la Reforma 300, Juárez, Cuauhtémoc, 06600 Ciudad de México, CDMX', '+525529028389'</p>
             </div>
-
         </div>
 
         <div class="institucion contenedor">
-
             <div class="imagen">
                 <img src="./views/src/img/neurowave.png" alt="institucion" style="width: 40rem;">
             </div>
-            
             <div class="texto">
                 <h1>Neurowave</h1>
-                <p>Psiquiatra', 'Calle Montes Urales 749 Interior 5 Col, Lomas de Chapultepec, 11000 Ciudad de México, CDMX', '+525590011976', '11000CDMX'</p>
+                <p>Psiquiatra', 'Calle Montes Urales 749 Interior 5 Col, Lomas de Chapultepec, 11000 Ciudad de México, CDMX', '+525590011976'</p>
             </div>
-
         </div>
 
         <div class="institucion contenedor">
-
             <div class="imagen">
                 <img src="./views/src/img/psychomex.png" alt="institucion" style="width: 30rem;">
             </div>
-            
             <div class="texto">
                 <h1>Psychomex</h1>
-                <p>Servicios Psicológicos y Nutrición', 'Guanajuato 78-int 203, Roma Nte., Cuauhtémoc, 06700 Ciudad de México, CDMX', '+525563867083', '06700CDMX</p>
+                <p>Servicios Psicológicos y Nutrición', 'Guanajuato 78-int 203, Roma Nte., Cuauhtémoc, 06700 Ciudad de México, CDMX', '+525563867083'</p>
             </div>
-
         </div>
 
     </div>
@@ -101,7 +96,8 @@
 
     <!-- js animaciones -->
     <script src="./views/src/js/gsap.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <!-- mi js -->
-    <script src="./views/src/js/app.js"></script>
+    <script src="./views/js/localizacion.js"></script>
 </body>
 </html>

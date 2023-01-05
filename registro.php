@@ -47,7 +47,7 @@
             if($flag != true){
                 $conexion = conexion();
                 if ($conexion) {
-                    $insert = 'INSERT INTO usuario (email, pass, nombre) VALUES ("'.$email.'","'.$pass.'","'.$nom_usu.'")';
+                    $insert = 'INSERT INTO usuario (email, password, nombre,fecha_nacimiento) VALUES ("'.$email.'","'.$pass.'","'.$nom_usu.'")';
                     //$statement = $conexion->prepare('INSERT INTO usuario (email, pass, nom_usu) VALUES (:email,:pass,:nom_usu)');
                     //if($statement->execute(array(':email' => $email,':pass' => $pass, ':nom_usu' => $nom_usu))===false){
                     if ($conexion->query($insert)!=false) {

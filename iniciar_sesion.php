@@ -2,11 +2,10 @@
     require('funciones.php');
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
         if (isset($_POST['email']) && isset($_POST['pass'])) {
-            require 'funciones.php';
             $result = ["result"=>false];
             $email = filtrado($_POST['email']);
             $pass = $_POST['pass'];
-            $pass = hash('sha512',$pass);
+            //$pass = hash('sha512',$pass);
             $errores = '';
             //debería funcionar para validar emails
             /*if (preg_match("/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9]+)+(\.)[a-zA-Z]{2,}$/",$email){
