@@ -110,6 +110,32 @@ function localizacion(){
 		});
 	});
 }
+function pruebas(){
+	var info = ["ac","bc","cc"];
+	$.ajax({
+		url: "/is/pruebas.php",
+		method:'POST',
+		data: {data: info},
+		success: function(data) {
+//			var result = data;
+			var result = JSON.parse(data);
+			console.log(data);
+			if (result.resul==true) {
+				alert("Recuperación de contraseña exitoso.");
+				//header("index.php");
+				window.location.href = "IS.php";
+			}else if(result.error!=undefined){
+				for (var i = 0; i < 6; i++) {
+					if (result.error[i]!=undefined) {
+						alert(result.error[i]);
+					}
+				}
+			}else{
+				alert("Es necesario que se llenen todos los campos.");
+			}
+		}
+	});
+}
 function getdist(lat,long){
 	apdata = {lat : lat, long: long}
 	$.ajax({

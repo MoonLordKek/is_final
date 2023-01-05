@@ -549,6 +549,7 @@ header .contenedormenu .menu nav ul li {
   display: none;
 }
 
+
 @media screen and (max-width: 768px) {
   .hero {
     display: none;
@@ -577,6 +578,24 @@ header .contenedormenu .menu nav ul li {
     width: 500rem;
   }
 }
+
+.tabla {
+  margin-top: 2rem;
+  gap: 2rem;
+  justify-content: center;
+  align-items: center;
+  font-family: "Montserrat", sans-serif;
+  font-size: 2rem;
+}
+.tabla button{
+  padding: 0.6rem;
+  background-color: #ed7966;
+  border: none;
+  border-radius: 0.7rem;
+  color: #FFFFFF;
+  transition: all 500ms;
+}
+
 .trastornos {
   margin-top: 5rem;
 }
