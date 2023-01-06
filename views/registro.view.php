@@ -46,13 +46,22 @@
 
     <div class="tabla contenedor">
         <div class="tabla">
-            <input type="text" id="email" placeholder="correo electrónico">
+            <input type="text" id="email" placeholder="Correo electrónico">
         </div>
         <div class="tabla" >
-            <input type="password" id="pass" placeholder="contraseña">    
+            <input type="text" id="nombre" placeholder="Nombre">    
+        </div>
+        <div class="tabla" >
+            <input type="password" id="pass" placeholder="Contraseña">    
+        </div>
+        <div class="tabla" >
+            <input type="password" id="pass2" placeholder="Confirmar contraseña">    
+        </div>
+        <div class="tabla" >
+            <input type="date" id="bdate">    
         </div>
         <div class="tabla">
-            <button class="button" onclick="iniciar_Ses()">Iniciar sesion</button>
+            <button class="button" onclick="addUsu()">Iniciar sesion</button>
         </div>        
     </div>
     

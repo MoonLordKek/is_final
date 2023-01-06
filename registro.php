@@ -8,17 +8,18 @@
         $result = ["result"=>false];
         require 'funciones.php';
 
-        if (isset($_POST['email']) && isset($_POST['pass']) && isset($_POST['pass2']) && isset($_POST['nom_usu'])) {
+        if (isset($_POST['email']) && isset($_POST['pass']) && isset($_POST['pass2']) && isset($_POST['nom_usu']) && isset($_POST['bdate'])) {
             $email = filtrado($_POST['email']);
             $pass = filtrado($_POST['pass']);
             $pass2 = filtrado($_POST['pass2']);
             $nom_usu = filtrado($_POST['nom_usu']);
+            $bdate = filtrado($_POST['bdate']);
 
-            if(empty($email) or empty($pass) or empty($pass2) or empty($nom_usu)){
+            if(empty($email) or empty($pass) or empty($pass2) or empty($nom_usu) or empty($bdate)){
                 $result["error"][0]="Es necesario que se llenen todos los campos.";
             }elseif (valEmail($email)) {
 
-            $result["error"][1]="Formato de correo invalido. \n Intente: example@ejemplo.com";
+                $result["error"][1]="Formato de correo invalido. \n Intente: example@ejemplo.com";
 
             }else if(valPass($pass)){
                 $result["error"][1]="Formato invalido de contraseña.\nLa contraseña debe tener al menos 6 carácteres, una mayúscula, una minúscula, un número y un símbolo especial.";
@@ -47,7 +48,7 @@
             if($flag != true){
                 $conexion = conexion();
                 if ($conexion) {
-                    $insert = 'INSERT INTO usuario (email, password, nombre,fecha_nacimiento) VALUES ("'.$email.'","'.$pass.'","'.$nom_usu.'")';
+                    $insert = 'INSERT INTO usuario (email, password, nombre,fecha_nacimiento) VALUES ("'.$email.'","'.$pass.'","'.$nom_usu.'","'.$bdate.'")';
                     //$statement = $conexion->prepare('INSERT INTO usuario (email, pass, nom_usu) VALUES (:email,:pass,:nom_usu)');
                     //if($statement->execute(array(':email' => $email,':pass' => $pass, ':nom_usu' => $nom_usu))===false){
                     if ($conexion->query($insert)!=false) {

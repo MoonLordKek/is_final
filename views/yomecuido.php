@@ -117,8 +117,11 @@
                     <h3>Relajación Muscular</h3>
                     <video src="./views/video/video17.mp4" controls></video>
                 </div>
-
-                <button style="margin-top: 5rem;"> <a href="#">Realizado ❤</a> </button>
+                <?php
+                    if(isset($_SESSION['usuario']))
+                        echo '<button style="margin-top: 5rem;" id="1" onclick="addTecUsu(this)"> Realizado ❤</button>';
+                ?>
+                
                 <button style="margin-top: 2rem;"> <a href="#opciones-trastornos">Regrasar arriba 👆</a> </button>
             </div>
 
@@ -150,7 +153,10 @@
                     <video src="./views/video/video18.mp4" controls></video>
                 </div>
 
-                <button style="margin-top: 5rem;"> <a href="#">Realizado ❤</a> </button>
+                <?php
+                    if(isset($_SESSION['usuario']))
+                        echo '<button style="margin-top: 5rem;" id="2" onclick="addTecUsu(this)"> Realizado ❤</button>';
+                ?>
                 <button style="margin-top: 2rem;"> <a href="#opciones-trastornos">Regrasar arriba 👆</a> </button>
             </div>
 
@@ -181,7 +187,10 @@
                     <video src="./views/video/video19.mp4" controls style="width:50rem;"></video>
                 </div>
 
-                <button style="margin-top: 5rem;"> <a href="#">Realizado ❤</a> </button>
+                <?php
+                    if(isset($_SESSION['usuario']))
+                        echo '<button style="margin-top: 5rem;" id="3" onclick="addTecUsu(this)"> Realizado ❤</button>';
+                ?>
                 <button style="margin-top: 2rem;"> <a href="#opciones-trastornos">Regrasar arriba 👆</a> </button>
             </div>
 
@@ -212,7 +221,10 @@
                     <video src="./views/video/video20.mp4" controls></video>
                 </div>
 
-                <button style="margin-top: 5rem;"> <a href="#">Realizado ❤</a> </button>
+                <?php
+                    if(isset($_SESSION['usuario']))
+                        echo '<button style="margin-top: 5rem;" id="4" onclick="addTecUsu(this)"> Realizado ❤</button>';
+                ?>
                 <button style="margin-top: 2rem;"> <a href="#opciones-trastornos">Regrasar arriba 👆</a> </button>
             </div>
 
@@ -247,7 +259,10 @@
                     <video src="./views/video/video21.mp4" controls></video>
                 </div>
 
-                <button style="margin-top: 5rem;"> <a href="#">Realizado ❤</a> </button>
+                <?php
+                    if(isset($_SESSION['usuario']))
+                        echo '<button style="margin-top: 5rem;" id="5" onclick="addTecUsu(this)"> Realizado ❤</button>';
+                ?>
                 <button style="margin-top: 2rem;"> <a href="#opciones-trastornos">Regrasar arriba 👆</a> </button>
             </div>
 
@@ -278,7 +293,10 @@
                     <video src="./views/video/video22.mp4" controls></video>
                 </div>
 
-                <button style="margin-top: 5rem;"> <a href="#">Realizado ❤</a> </button>
+                <?php
+                    if(isset($_SESSION['usuario']))
+                        echo '<button style="margin-top: 5rem;" id="6" onclick="addTecUsu(this)"> Realizado ❤</button>';
+                ?>
                 <button style="margin-top: 2rem;"> <a href="#opciones-trastornos">Regrasar arriba 👆</a> </button>
             </div>
 
@@ -309,7 +327,10 @@
                     <video src="./views/video/video23.mp4" controls></video>
                 </div>
 
-                <button style="margin-top: 5rem;"> <a href="#">Realizado ❤</a> </button>
+                <?php
+                    if(isset($_SESSION['usuario']))
+                        echo '<button style="margin-top: 5rem;" id="7" onclick="addTecUsu(this)"> Realizado ❤</button>';
+                ?>
                 <button style="margin-top: 2rem;"> <a href="#opciones-trastornos">Regrasar arriba 👆</a> </button>
             </div>
         </div>
@@ -343,7 +364,10 @@
                     <video src="./views/video/video24.mp4" controls></video>
                 </div>
 
-                <button style="margin-top: 5rem;"> <a href="#">Realizado ❤</a> </button>
+                <?php
+                    if(isset($_SESSION['usuario']))
+                        echo '<button style="margin-top: 5rem;" id="8" onclick="addTecUsu(this)"> Realizado ❤</button>';
+                ?>
                 <button style="margin-top: 2rem;"> <a href="#opciones-trastornos">Regrasar arriba 👆</a> </button>
             </div>
             
@@ -375,7 +399,10 @@
                     <video src="./views/video/video25.mp4" controls></video>
                 </div>
 
-                <button style="margin-top: 5rem;"> <a href="#">Realizado ❤</a> </button>
+                <?php
+                    if(isset($_SESSION['usuario']))
+                        echo '<button style="margin-top: 5rem;" id="9" onclick="addTecUsu(this)"> Realizado ❤</button>';
+                ?>
                 <button style="margin-top: 2rem;"> <a href="#opciones-trastornos">Regrasar arriba 👆</a> </button>
             </div>
 
@@ -406,7 +433,10 @@
                     <video src="./views/video/video26.mp4" controls></video>
                 </div>
 
-                <button style="margin-top: 5rem;"> <a href="#">Realizado ❤</a> </button>
+                <?php
+                    if(isset($_SESSION['usuario']))
+                        echo '<button style="margin-top: 5rem;" id="10" onclick="addTecUsu(this)"> Realizado ❤</button>';
+                ?>
                 <button style="margin-top: 2rem;"> <a href="#opciones-trastornos">Regrasar arriba 👆</a> </button>
             </div>
 
@@ -437,7 +467,10 @@
                     <video src="./views/video/video27.mp4" controls></video>
                 </div>
 
-                <button style="margin-top: 5rem;"> <a href="#">Realizado ❤</a> </button>
+                <?php
+                    if(isset($_SESSION['usuario']))
+                        echo '<button style="margin-top: 5rem;" id="11" onclick="addTecUsu(this)"> Realizado ❤</button>';
+                ?>
                 <button style="margin-top: 2rem;"> <a href="#opciones-trastornos">Regrasar arriba 👆</a> </button>
             </div>
 
@@ -472,7 +505,10 @@
                     <video src="./views/video/video28.mp4" controls></video>
                 </div>
 
-                <button style="margin-top: 5rem;"> <a href="#">Realizado ❤</a> </button>
+                <?php
+                    if(isset($_SESSION['usuario']))
+                        echo '<button style="margin-top: 5rem;" id="12" onclick="addTecUsu(this)"> Realizado ❤</button>';
+                ?>
                 <button style="margin-top: 2rem;"> <a href="#opciones-trastornos">Regrasar arriba 👆</a> </button>
             </div>
 
@@ -503,7 +539,10 @@
                     <video src="./views/video/video29.mp4" controls></video>
                 </div>
 
-                <button style="margin-top: 5rem;"> <a href="#">Realizado ❤</a> </button>
+                <?php
+                    if(isset($_SESSION['usuario']))
+                        echo '<button style="margin-top: 5rem;" id="13" onclick="addTecUsu(this)"> Realizado ❤</button>';
+                ?>
                 <button style="margin-top: 2rem;"> <a href="#opciones-trastornos">Regrasar arriba 👆</a> </button>
             </div>
 
@@ -534,7 +573,10 @@
                     <video src="./views/video/video30.mp4" controls></video>
                 </div>
 
-                <button style="margin-top: 5rem;"> <a href="#">Realizado ❤</a> </button>
+                <?php
+                    if(isset($_SESSION['usuario']))
+                        echo '<button style="margin-top: 5rem;" id="14" onclick="addTecUsu(this)"> Realizado ❤</button>';
+                ?>
                 <button style="margin-top: 2rem;"> <a href="#opciones-trastornos">Regrasar arriba 👆</a> </button>
             </div>
 
@@ -565,7 +607,10 @@
                     <video src="./views/video/video31.mp4" controls></video>
                 </div>
 
-                <button style="margin-top: 5rem;"> <a href="#">Realizado ❤</a> </button>
+                <?php
+                    if(isset($_SESSION['usuario']))
+                        echo '<button style="margin-top: 5rem;" id="15" onclick="addTecUsu(this)"> Realizado ❤</button>';
+                ?>
                 <button style="margin-top: 2rem;"> <a href="#opciones-trastornos">Regrasar arriba 👆</a> </button>
             </div>
 
@@ -601,7 +646,10 @@
                     <video src="./views/video/video32.mp4" controls></video>
                 </div>
     
-                <button style="margin-top: 5rem;"> <a href="#">Realizado ❤</a> </button>
+                <?php
+                    if(isset($_SESSION['usuario']))
+                        echo '<button style="margin-top: 5rem;" id="16" onclick="addTecUsu(this)"> Realizado ❤</button>';
+                ?>
                 <button style="margin-top: 2rem;"> <a href="#opciones-trastornos">Regrasar arriba 👆</a> </button>
             </div>
     
@@ -622,6 +670,7 @@
     <script src="./views/src/js/gsap.js"></script>
     <!-- mi js -->
     <script src="./views/src/js/app.js"></script>
+    <script src="./views/js/funciones.js"></script>
 </body>
 
 </html>

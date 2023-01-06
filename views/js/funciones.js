@@ -30,21 +30,22 @@ function iniciar_Ses(){
 function addUsu(){
 	var email = document.getElementById("email").value;
 	var pass = document.getElementById("pass").value;
-	var nom_usu = document.getElementById("nom_usu").value;
+	var nom_usu = document.getElementById("nombre").value;
 	var pass_2 = document.getElementById("pass2").value;
-	apdata = {email : email, pass: pass, pass2 : pass_2, nom_usu: nom_usu}
+	var bdate = document.getElementById("bdate").value;
+	apdata = {email : email, pass: pass, pass2 : pass_2, nom_usu: nom_usu, bdate: bdate}
 	console.log(apdata);
 	$.ajax({
 		url: "/is/registro.php",
 		method:'POST',
 		data: apdata,
 		success: function(data) {
+			console.log(data);
 			var result = JSON.parse(data);
-			var resul = data;
-				console.log(data);
-			if (result.resul==true) {
+			console.log(result);
+			if (result.result==true) {
 				alert("El usuario se ha registrado exitosamente.");
-				window.location.href = "IS.php";
+				window.location.href = "iniciar_sesion.php";
 				//header("index.php");
 			}else if(result.error!=undefined){
 				for (var i = 0; i < 6; i++) {
@@ -88,34 +89,6 @@ function rec_Con(){
 	});
 }
 	
-
-function rec_con(){
-	var info = ["ac","bc","cc"];
-	$.ajax({
-		url: "/is/pruebas.php",
-		method:'POST',
-		data: {data: info},
-		success: function(data) {
-//			var result = data;
-			var result = JSON.parse(data);
-			console.log(data);
-			if (result.resul==true) {
-				alert("Recuperación de contraseña exitoso.");
-				//header("index.php");
-				window.location.href = "IS.php";
-			}else if(result.error!=undefined){
-				for (var i = 0; i < 6; i++) {
-					if (result.error[i]!=undefined) {
-						alert(result.error[i]);
-					}
-				}
-			}else{
-				alert("Es necesario que se llenen todos los campos.");
-			}
-		}
-	});
-}
-
 function pruebas(){
 	var id = document.getElementById("idCuestionario").value;
 	apdata = {id: id};
@@ -347,4 +320,19 @@ function evaluar2(){
 			});
 		}
 	}
+}
+
+function addTecUsu(element){
+	var apdata = {id: element.id}
+	$.ajax({
+		url: "/is/yomecuido.php",
+		method:'POST',
+		data: apdata,
+		success: function(data) {
+			console.log(data);
+			var result = JSON.parse(data);
+			if(result!=undefined)
+				document.getElementById('mensaje').innerHTML=result;
+		}
+	});
 }
