@@ -15,6 +15,8 @@
     
     <!-- hoja de estilos -->
     <link rel="stylesheet" href="./views/build/css/app.css">
+    <!-- jqery & ajax -->
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 </head>
 
 <body>
@@ -119,7 +121,7 @@
                 </div>
                 <?php
                     if(isset($_SESSION['usuario']))
-                        echo '<button style="margin-top: 5rem;" id="1" onclick="addTecUsu(this)"> Realizado ❤</button>';
+                        echo '<button style="margin-top: 5rem;" id="1" onclick="addTecUsu(this)" disabled> Realizado ❤</button>';
                 ?>
                 
                 <button style="margin-top: 2rem;"> <a href="#opciones-trastornos">Regrasar arriba 👆</a> </button>

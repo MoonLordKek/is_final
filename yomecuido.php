@@ -6,16 +6,16 @@
 		$statement = $conexion->prepare('SELECT * FROM tecnicas_usuario WHERE id_tecnica=:id AND email=:email');
 		$statement->execute(array(':email'=>$_SESSION['email'],':id'=>$id));
 		if(!$statement->fetch()){
-			$statement = $conexion->prepare('INSERT (email,id_tecnica,estado) INTO tecnicas_usuario VALUES (:email, :id,1)');
+			$statement = $conexion->prepare('INSERT INTO tecnicas_usuario (email,id_tecnica,estado) VALUES (:email, :id,1)');
 			if($statement->execute(array(':email'=>$_SESSION['email'],':id'=>$id))){
 				$result["result"]=true;
 			}else{
 				$result["error"][0]="Error al ejecutar la query";
 			}
-			echo $result;
 		}else{
 			$result["error"][1]="Técnica ya registrada";
 		}
+		echo json_encode($result);
 	}else{
 		require('views/yomecuido.php');
 	}

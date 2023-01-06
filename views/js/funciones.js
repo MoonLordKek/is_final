@@ -103,7 +103,7 @@ function pruebas(){
 			// <i class='fa-solid fa-circle-check'></i>
 			var tests = document.getElementById('tests');
 			var html = '<table style="text-align: center"> ';
-			var contador = 1, op4=1;
+			var contador = 1, op4=1,flag=1;
 			for (let i = 0; i < Object.keys(result).length; i++) {
 				//tipo de pregunta
 				switch (result[i][2]){
@@ -127,6 +127,7 @@ function pruebas(){
 						html+="</tr>";
 						break;
 					case "2":
+						
 						//console.log("i'm in case 2");
 						html+="<tr><th widht='50'>"+result[i][1]+"</th><th>Sí</th><th>No</th></tr>";
 						for (let j = 0; j < Object.keys(result[i][3]).length; j++,contador++) {
@@ -148,6 +149,7 @@ function pruebas(){
 						html+="</tr>";
 						break;
 					case "3":
+						flag=0;
 						//console.log("i'm in case 3");
 						html+="<tr><th widht='50'>"+result[i][1]+"</th>";
 						for (let j = 0; j < Object.keys(result[i][3]).length; j++) {
@@ -160,9 +162,9 @@ function pruebas(){
 								html+="<tr><td>"+result[i][3][j].adicion+"</td>";
 								for (let k = 0; k < 5; k++) {
 									html+="<td>"+
-									"<span class='spanQ"+(j+1)+"' id='spanQ"+(i+1)+(j+1)+"' onclick='buttonChecked(this)'>"+
+									"<span class='spanQ"+(i+1)+(j-4)+"' id='spanQ"+(i+1)+(j-4)+(k+1)+"' onclick='buttonChecked(this)'>"+
 									"<i class='fa-regular fa-circle radioQ1' ></i></span>"+
-									"<input id='ipQ"+(i+1)+(j+1)+"' type='radio' name='question"+(contador)+"' value='"+result[i][3][k][2]+"' hidden>"
+									"<input id='ipQ"+(i+1)+(j-4)+(k+1)+"' type='radio' name='question"+(contador)+"' value='"+result[i][3][k][2]+"' hidden>"
 									"<input type='radio' name='question"+(contador)+"' value='"+result[i][3][k][2]+"'></td>";	
 									
 								}
@@ -201,7 +203,10 @@ function pruebas(){
 				console.log("pregunta: "+result[i][2]);
 			}
 			document.getElementById("noPreguntas").value = result.length;
-			html+="</table><div class='opciones' style='padding: 5%'><button onclick='evaluar()'>kekw</button></div>";
+			if(flag ==1)
+				html+="</table><div class='opciones' style='padding: 5%'><button onclick='evaluar()'>kekw</button></div>";
+			else
+				html+="</table><div class='opciones' style='padding: 5%'><button onclick='evaluar2()'>kekw</button></div>";
 			//console.log(html);
 			tests.innerHTML=html;
 		}
@@ -276,7 +281,7 @@ function evaluar(){
 			console.log(total);
 			//adaptar forma de obtener el número de elementos
 			var apdata={id: document.getElementById('idCuestionario').value,
-						resultados: total};
+						resultados: total, tipo: 1};
 			$.ajax({
 				url: "/is/evaluacion.php",
 				method:'POST',
@@ -294,38 +299,34 @@ function evaluar(){
 
 function evaluar2(){
 	var noElementos = document.getElementById('noPreguntas').value;
-	var total = 0;
+	var texto;
+	var arreglo_resultados=[];
 	console.log("noEl: "+document.getElementById('idCuestionario').value);
 	for (let i = 1; i <= noElementos; i++) {
-		if(document.querySelector('input[name="question'+i+'"]:checked')==null){
-			alert("Por favor conteste todas las preguntas");
-			break;
-		}else{	
-			console.log(document.querySelector('input[name="question'+i+'"]:checked'));	
-			total += parseInt(document.querySelector('input[name="question'+i+'"]:checked').value);
-			console.log(total);
-			//adaptar forma de obtener el número de elementos
-			var apdata={id: document.getElementById('idCuestionario').value,
-						resultados: total};
-			$.ajax({
-				url: "/is/evaluacion.php",
-				method:'POST',
-				data: apdata,
-				success: function(data) {
-					console.log(data);
-					var result = JSON.parse(data);
-					if(result!=undefined)
-						document.getElementById('mensaje').innerHTML=result;
+		for (let j = 1; j < 11; j++) {
+			if(i==1)
+				texto = 'input[name="question'+(i)+'"]:checked'
+			else
+				texto = 'input[name="question'+(i)+(j)+'"]:checked'	
+			console.log(texto);
+			if(document.querySelector(texto)==null){
+				alert("Por favor conteste todas las preguntas "+i);
+				break;
+			}else{	
+				if(i!=1){
+					//console.log(document.querySelector('input[name="question'+(i)+(j)+'"]:checked'));	
+					arreglo_resultados[j-1] += parseInt(document.querySelector('input[name="question'+(i)+(j)+'"]:checked').value);
+				}else{
+					//console.log(document.querySelector('input[name="question'+(i)+'"]:checked'));	
+					arreglo_resultados[j-1] += parseInt(document.querySelector('input[name="question'+(i)+'"]:checked').value);
 				}
-			});
-		}
-	}
-}
+			}
 
-function addTecUsu(element){
-	var apdata = {id: element.id}
+		}		
+	}
+	var apdata={id: document.getElementById('idCuestionario').value, resultados: arreglo_resultados, tipo: 2};
 	$.ajax({
-		url: "/is/yomecuido.php",
+		url: "/is/evaluacion.php",
 		method:'POST',
 		data: apdata,
 		success: function(data) {
@@ -333,6 +334,28 @@ function addTecUsu(element){
 			var result = JSON.parse(data);
 			if(result!=undefined)
 				document.getElementById('mensaje').innerHTML=result;
+		}
+	});
+}
+
+function addTecUsu(element){
+	var apdata = {id: element.id}
+	console.log(apdata);
+	$.ajax({
+		url: "/is/yomecuido.php",
+		method:'POST',
+		data: apdata,
+		success: function(data) {
+			console.log(data);
+			var result = JSON.parse(data);
+			console.log(result)
+			if(result["error"]!=undefined){
+				alert(result["error"][1]);
+				element.disabled;
+			}else{
+				alert("Técnica registrada");
+				element.disabled;
+			}
 		}
 	});
 }
