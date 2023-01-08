@@ -595,6 +595,9 @@ header .contenedormenu .menu nav ul li {
   color: #FFFFFF;
   transition: all 500ms;
 }
+.tabla .pregunta{
+  width: 50%;
+}
 
 .trastornos {
   margin-top: 5rem;

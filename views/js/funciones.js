@@ -102,7 +102,7 @@ function pruebas(){
 			console.log(result);
 			// <i class='fa-solid fa-circle-check'></i>
 			var tests = document.getElementById('tests');
-			var html = '<table style="text-align: center"> ';
+			var html = '<table border=1 style="text-align: center" class="tabla"> ';
 			var contador = 1, op4=1,flag=1;
 			for (let i = 0; i < Object.keys(result).length; i++) {
 				//tipo de pregunta
@@ -148,7 +148,7 @@ function pruebas(){
 						
 						html+="</tr>";
 						break;
-					case "3":
+					case ("3" || "6"):
 						flag=0;
 						//console.log("i'm in case 3");
 						html+="<tr><th widht='50'>"+result[i][1]+"</th>";
@@ -197,6 +197,23 @@ function pruebas(){
 						break;
 					default:
 						//console.log("i'm in default case "+ result[i][2]);
+						//console.log("i'm in case 1");
+						html+="<tr><th widht='50%'></th>";
+						if(op4==1){
+							op4=0;
+							for (let j = 0; j < Object.keys(result[i][3]).length; j++) {
+								html+="<th>"+result[i][3][j].adicion+"</th>";	
+							}
+						}
+						html+="</tr><tr><td class='pregunta'>"+result[i][1]+"</td>";
+						for (let j = 0; j < Object.keys(result[i][3]).length; j++) {
+							html+=
+								"<td><span class='spanQ"+(i+1)+"' id='spanQ"+(i+1)+(j+1)+"' onclick='buttonChecked(this)'>"+
+									"<i class='fa-regular fa-circle radioQ1' ></i></span>"+
+									"<input id='ipQ"+(i+1)+(j+1)+"' type='radio' name='question"+(contador)+"' value='"+result[i][3][j][2]+"' hidden></td>";	
+						}
+						(contador++);
+						html+="</tr>";
 						break;
 				}
 				html+="</tr>";
@@ -204,9 +221,9 @@ function pruebas(){
 			}
 			document.getElementById("noPreguntas").value = result.length;
 			if(flag ==1)
-				html+="</table><div class='opciones' style='padding: 5%'><button onclick='evaluar()'>kekw</button></div>";
+				html+="</table><div class='opciones' style='padding: 5%'><button onclick='evaluar()'>Enviar</button></div><div id='mensaje' class='contenedor texto'></div>";
 			else
-				html+="</table><div class='opciones' style='padding: 5%'><button onclick='evaluar2()'>kekw</button></div>";
+				html+="</table><div class='opciones' style='padding: 5%'><button onclick='evaluar2()'>Enviar</button></div><div id='mensaje' class='contenedor texto'></div>";
 			//console.log(html);
 			tests.innerHTML=html;
 		}
@@ -269,26 +286,38 @@ function getTecnica(){
 
 function evaluar(){
 	var noElementos = document.getElementById('noPreguntas').value;
-	var total = 0;
+	var total = 0, flag=1;
 	console.log("noEl: "+document.getElementById('idCuestionario').value);
 	for (let i = 1; i <= noElementos; i++) {
 		if(document.querySelector('input[name="question'+i+'"]:checked')==null){
 			alert("Por favor conteste todas las preguntas");
+			flag=0;
 			break;
 		}else{	
 			console.log(document.querySelector('input[name="question'+i+'"]:checked'));	
 			total += parseInt(document.querySelector('input[name="question'+i+'"]:checked').value);
 			console.log(total);
 			//adaptar forma de obtener el número de elementos
-			var apdata={id: document.getElementById('idCuestionario').value,
+			
+		}
+		var apdata={id: document.getElementById('idCuestionario').value,
 						resultados: total, tipo: 1};
+		if(flag==1){
 			$.ajax({
 				url: "/is/evaluacion.php",
 				method:'POST',
 				data: apdata,
 				success: function(data) {
+					var diag = JSON.parse(data)
 					console.log(data);
-					var result = JSON.parse(data);
+					
+					var result = "<h1>El resultado del test es: </h1><br>"+
+						"<h2>"+JSON.parse(data)+"</h2>";
+					if(diag=="Extremadamente severo" || diag=="Severo" || diag=="Severa"){
+						result+="<p>Los resultados de test anterior son preocupantes, por lo que recomendamos que veas a un especialista para poder tratar los problemas que puedas tener</p>"+
+							"<p>Puedes dar click en el siguiente botón que te mostrará algunas instituciones que podrían ayudarte</p>"+
+							"<a href='./instituciones.php'><button class=''>Instituciones</button></a>";
+					}
 					if(result!=undefined)
 						document.getElementById('mensaje').innerHTML=result;
 				}
@@ -321,7 +350,6 @@ function evaluar2(){
 					arreglo_resultados[j-1] += parseInt(document.querySelector('input[name="question'+(i)+'"]:checked').value);
 				}
 			}
-
 		}		
 	}
 	var apdata={id: document.getElementById('idCuestionario').value, resultados: arreglo_resultados, tipo: 2};

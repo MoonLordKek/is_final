@@ -13,7 +13,7 @@ $(document).ready(function(){
                 getdist(lat,longi)
             },
             function(){
-                window.alert("No permitir la localización no mostrará las instituciones de acuerdo a tu localización");
+                window.alert("No permitir la localización no mostrará las instituciones de acuerdo con tu localización");
             }
         )
     }

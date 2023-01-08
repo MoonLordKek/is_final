@@ -132,7 +132,7 @@
                         
                     </tr>
                     <tr>
-                        <td>Me satisface como compartimos en familia: \na)El tiempo para estar juntos\nb)Los espacios en casa\nc)El dinero</td>
+                        <td>Me satisface como compartimos en familia: a)El tiempo para estar juntos b)Los espacios en casa c)El dinero</td>
                         <td><span class="spanQ5" id="spanQ51" onclick="buttonChecked(this)"><i class="fa-regular fa-circle radioQ1"></i></span><input id="ipQ51" type="radio" name="question5" value="0" hidden=""></td>
                         <td><span class="spanQ5" id="spanQ52" onclick="buttonChecked(this)"><i class="fa-regular fa-circle radioQ1"></i></span><input id="ipQ52" type="radio" name="question5" value="1" hidden=""></td>
                         <td><span class="spanQ5" id="spanQ53" onclick="buttonChecked(this)"><i class="fa-regular fa-circle radioQ1"></i></span><input id="ipQ53" type="radio" name="question5" value="2" hidden=""></td>
@@ -144,12 +144,10 @@
             <div class="opciones ">
                 <button onclick="evaluar()">Enviar</button>
             </div>
-            
+            <div id="mensaje" class="contenedor texto">
+            </div>
         </div>
-        <div id="mensaje" class="contenedor texto">
-            
-            
-        </div>
+       
     </div>
 
     <footer class="contenedor opciones">
