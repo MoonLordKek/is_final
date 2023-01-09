@@ -225,11 +225,6 @@ legend {
   white-space: normal; /* 1 */
 }
 
-th {
-  height: max-content;
-  width: auto;
-}
-
 /**
  * Add the correct vertical alignment in Chrome, Firefox, and Opera.
  */
@@ -549,7 +544,6 @@ header .contenedormenu .menu nav ul li {
   display: none;
 }
 
-
 @media screen and (max-width: 768px) {
   .hero {
     display: none;
@@ -578,7 +572,6 @@ header .contenedormenu .menu nav ul li {
     width: 500rem;
   }
 }
-
 .tabla {
   margin-top: 2rem;
   gap: 2rem;
@@ -602,26 +595,6 @@ header .contenedormenu .menu nav ul li {
 .trastornos {
   margin-top: 5rem;
 }
-.tests-opciones {
-  gap: 2rem;
-  justify-content: left;
-  align-items: center;
-  font-family: "Montserrat", sans-serif;
-  font-size: 1.6rem;
-}
-.tests-opciones button{
-  padding: 0.6rem;
-  background-color: #ed7966;
-  border: none;
-  border-radius: 0.7rem;
-  color: #FFFFFF;
-  transition: all 500ms;
-}
-.tests-opciones button:hover {
-  cursor: pointer;
-  scale: 1.05;
-  background-color: #cf6c5d;
-}
 .trastornos .opciones {
   display: flex;
   gap: 2rem;
@@ -642,7 +615,6 @@ header .contenedormenu .menu nav ul li {
   cursor: pointer;
   scale: 1.05;
 }
-
 .trastornos .opciones button {
   padding: 0.6rem;
   background-color: #ed7966;
@@ -651,7 +623,6 @@ header .contenedormenu .menu nav ul li {
   color: #FFFFFF;
   transition: all 500ms;
 }
-
 .trastornos .opciones button:hover {
   cursor: pointer;
   scale: 1.05;
@@ -1066,7 +1037,7 @@ form {
   background-color: #d36b5b;
   scale: 1.02;
 }
-.formulario .contenedor   {
+.formulario .contenedor button {
   font-family: "Montserrat", sans-serif;
   margin-bottom: 4rem;
   font-family: "Montserrat", sans-serif;
