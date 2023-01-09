@@ -19,6 +19,7 @@
     <!-- hoja de estilos -->
     <link rel="stylesheet" href="./views/build/css/app.css">
     <link rel="stylesheet" href="./views/build/css/estilos.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	
 </head>  
 <body>
@@ -78,5 +79,6 @@
         <script src="./views/src/js/gsap.js"></script>
         <!-- mi js -->
         <script src="./views/src/js/app.js"></script>
+        <script src="./views/js/funciones.js"></script>
 </body>
 </html>

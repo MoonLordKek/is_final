@@ -121,7 +121,7 @@
                 </div>
                 <?php
                     if(isset($_SESSION['usuario']))
-                        echo '<button style="margin-top: 5rem;" id="1" onclick="addTecUsu(this)" disabled> Realizado ❤</button>';
+                        echo '<button style="margin-top: 5rem;" id="1" onclick="addTecUsu(this)"> Realizado ❤</button>';
                 ?>
                 
                 <button style="margin-top: 2rem;"> <a href="#opciones-trastornos">Regrasar arriba 👆</a> </button>

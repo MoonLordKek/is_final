@@ -19,6 +19,7 @@
     <!-- hoja de estilos -->
     <link rel="stylesheet" href="./views/build/css/app.css">
     <link rel="stylesheet" href="./views/build/css/estilos.css">
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	
 </head>  
 <body>
@@ -52,7 +53,7 @@
                
                <div class="input-contenedor">
                    <i class="fas fa-user icon"></i>
-                   <input type="text" placeholder="Nombre Completo">
+                   <input type="text" id="nombre" placeholder="Nombre Completo">
                 </div>
                    
                    <div class="input-contenedor">
@@ -94,5 +95,6 @@
         <script src="./views/src/js/gsap.js"></script>
         <!-- mi js -->
         <script src="./views/src/js/app.js"></script>
+        <script src="./views/js/funciones.js"></script>
 </body>
 </html>

@@ -102,14 +102,14 @@ function pruebas(){
 			console.log(result);
 			// <i class='fa-solid fa-circle-check'></i>
 			var tests = document.getElementById('tests');
-			var html = '<table border=1 style="text-align: center" class="tabla"> ';
+			var html = '<table style="text-align: center" class="tabla"> ';
 			var contador = 1, op4=1,flag=1;
 			for (let i = 0; i < Object.keys(result).length; i++) {
 				//tipo de pregunta
 				switch (result[i][2]){
 					case "1":
-						//console.log("i'm in case 1");
-						html+="<tr><th widht='50'></th>";
+						console.log("i'm in case 1");
+						html+="<tr id='q"+(i)+"'><th widht='50'></th>";
 						if(op4==1){
 							op4=0;
 							for (let j = 0; j < Object.keys(result[i][3]).length; j++) {
@@ -119,16 +119,15 @@ function pruebas(){
 						html+="</tr><tr><td>"+result[i][1]+"</td>";
 						for (let j = 0; j < Object.keys(result[i][3]).length; j++) {
 							html+=
-								"<td><span class='spanQ"+(i+1)+"' id='spanQ"+(i+1)+(j+1)+"' onclick='buttonChecked(this)'>"+
-									"<i class='fa-regular fa-circle radioQ1' ></i></span>"+
+								"<td><a href='#q"+(i)+"'><span class='spanQ"+(i+1)+"' id='spanQ"+(i+1)+(j+1)+"' onclick='buttonChecked(this)'>"+
+									"<i class='fa-regular fa-circle radioQ1' ></i></span></a>"+
 									"<input id='ipQ"+(i+1)+(j+1)+"' type='radio' name='question"+(contador)+"' value='"+result[i][3][j][2]+"' hidden></td>";	
 						}
 						(contador++);
 						html+="</tr>";
 						break;
 					case "2":
-						
-						//console.log("i'm in case 2");
+						console.log("i'm in case 2");
 						html+="<tr><th widht='50'>"+result[i][1]+"</th><th>Sí</th><th>No</th></tr>";
 						for (let j = 0; j < Object.keys(result[i][3]).length; j++,contador++) {
 							if(result[i][3][j][1]=="sustancia")
@@ -148,12 +147,12 @@ function pruebas(){
 						
 						html+="</tr>";
 						break;
-					case ("3" || "6"):
+					case "3":
 						flag=0;
-						//console.log("i'm in case 3");
-						html+="<tr><th widht='50'>"+result[i][1]+"</th>";
+						console.log("i'm in case 3");
+						html+="<tr id='q"+(i)+"'><th widht='50'>"+result[i][1]+"</th>";
 						for (let j = 0; j < Object.keys(result[i][3]).length; j++) {
-							if(result[i][3][j][1]=="frecuencia")
+							if(result[i][3][j][1]=="frecuencia") 
 								html+="<th>"+result[i][3][j].adicion+"</th>";	
 						}
 						html+="</tr>";
@@ -174,8 +173,8 @@ function pruebas(){
 						html+="</tr>";
 						break;
 					case "4":
-						//console.log("i'm in case 1");
-						html+="<tr><th widht='50'></th>";
+						console.log("i'm in case 4");
+						html+="<tr id='q"+(i)+"'><th widht='50'></th>";
 						if (op4==1){
 							op4 = 0;
 							for (let j = 0; j < Object.keys(result[i][3]).length; j++) {
@@ -186,9 +185,9 @@ function pruebas(){
 						}
 						html+="</tr><tr><td>"+result[i][1]+"</td>";
 						for (let j = 0; j < Object.keys(result[i][3]).length; j++) {
-							html+="<td>"+
+							html+="<td><a href='#q"+(i)+"'>"+
 							"<span class='spanQ"+(i+1)+"' id='spanQ"+(i+1)+(j+1)+"' onclick='buttonChecked(this)'>"+
-							"<i class='fa-regular fa-circle radioQ1' ></i></span>"+
+							"<i class='fa-regular fa-circle radioQ1' ></i></span></a>"+
 							"<input id='ipQ"+(i+1)+(j+1)+"' type='radio' name='question"+(contador)+"' value='"+result[i][3][j][2]+"' hidden>"
 							"<input type='radio' name='question"+(contador)+"' value="+result[i][3][j][2]+"></td>";	
 						}
@@ -196,25 +195,23 @@ function pruebas(){
 						html+="</tr>";
 						break;
 					default:
-						//console.log("i'm in default case "+ result[i][2]);
-						//console.log("i'm in case 1");
-						html+="<tr><th widht='50%'></th>";
-						if(op4==1){
-							op4=0;
-							for (let j = 0; j < Object.keys(result[i][3]).length; j++) {
+						console.log("i'm in case 3");
+						html+="<tr id='q"+(i)+"'><th widht='50'>"+(i+1)+"</th>";
+						for (let j = 0; j < Object.keys(result[i][3]).length; j++) {
+							if(result[i][3][j][1]=="intensidad") 
 								html+="<th>"+result[i][3][j].adicion+"</th>";	
-							}
 						}
 						html+="</tr><tr><td class='pregunta'>"+result[i][1]+"</td>";
 						for (let j = 0; j < Object.keys(result[i][3]).length; j++) {
 							html+=
-								"<td><span class='spanQ"+(i+1)+"' id='spanQ"+(i+1)+(j+1)+"' onclick='buttonChecked(this)'>"+
-									"<i class='fa-regular fa-circle radioQ1' ></i></span>"+
+								"<td><a href='#q"+(i)+"'><span class='spanQ"+(i+1)+"' id='spanQ"+(i+1)+(j+1)+"' onclick='buttonChecked(this)'>"+
+									"<i class='fa-regular fa-circle radioQ1' ></i></span></a>"+
 									"<input id='ipQ"+(i+1)+(j+1)+"' type='radio' name='question"+(contador)+"' value='"+result[i][3][j][2]+"' hidden></td>";	
 						}
 						(contador++);
 						html+="</tr>";
 						break;
+					
 				}
 				html+="</tr>";
 				console.log("pregunta: "+result[i][2]);
@@ -224,7 +221,7 @@ function pruebas(){
 				html+="</table><div class='opciones' style='padding: 5%'><button onclick='evaluar()'>Enviar</button></div><div id='mensaje' class='contenedor texto'></div>";
 			else
 				html+="</table><div class='opciones' style='padding: 5%'><button onclick='evaluar2()'>Enviar</button></div><div id='mensaje' class='contenedor texto'></div>";
-			//console.log(html);
+			console.log(html);
 			tests.innerHTML=html;
 		}
 	});
@@ -300,7 +297,8 @@ function evaluar(){
 			//adaptar forma de obtener el número de elementos
 			
 		}
-		var apdata={id: document.getElementById('idCuestionario').value,
+	}
+	var apdata={id: document.getElementById('idCuestionario').value,
 						resultados: total, tipo: 1};
 		if(flag==1){
 			$.ajax({
@@ -308,8 +306,9 @@ function evaluar(){
 				method:'POST',
 				data: apdata,
 				success: function(data) {
-					var diag = JSON.parse(data)
 					console.log(data);
+					var diag = JSON.parse(data)
+					console.log(diag);
 					
 					var result = "<h1>El resultado del test es: </h1><br>"+
 						"<h2>"+JSON.parse(data)+"</h2>";
@@ -323,7 +322,6 @@ function evaluar(){
 				}
 			});
 		}
-	}
 }
 
 function evaluar2(){
@@ -384,6 +382,7 @@ function addTecUsu(element){
 				alert("Técnica registrada");
 				element.disabled;
 			}
+			$(element).hide();
 		}
 	});
 }
